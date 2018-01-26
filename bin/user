@@ -85,6 +85,6 @@ owner: $USERDN
 EOF
 else
     echo "wrong input values"
-    echo "./user add loginname firstname surname password add"
+    echo "./user loginname firstname surname password add"
     exit 2
 fi
