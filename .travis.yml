@@ -11,8 +11,8 @@ script:
     - sleep 10
     - bin/initialize
     - bin/group public add
-    - bin/user public add
-    - bin/user public in public
+    - bin/user public firstname surname password add
+    - bin/user public firstname surname password in public
     - bin/search
     - yes | bin/clear
     - docker rm -f apacheds-test
