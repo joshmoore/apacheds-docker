@@ -15,8 +15,8 @@ script:
     - echo "Old style"
     - bin/initialize
     - bin/group public add
-    - bin/user public add
-    - bin/user public in public
+    - bin/user public firstname surname password add
+    - bin/user public firstname surname password in public
     - bin/search
     - yes | bin/clear
     - echo "New style"

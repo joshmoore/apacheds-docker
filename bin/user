@@ -11,6 +11,12 @@ LDAPADD="ldapadd -v -h ${LDAPHOST} -p ${LDAPPORT} -x -D uid=admin,ou=system -w $
 LDAPMODIFY="ldapmodify -v -h ${LDAPHOST} -p ${LDAPPORT} -x -D uid=admin,ou=system -w ${LDAPPASS}"
 
 USER=$1
+USERFNAME=$2
+USERSNAME=$3
+USERPASSWORD=$4
+shift
+shift
+shift
 shift
 USERDN="uid=$USER,ou=Users,$LDAPDOMAIN"
 
@@ -26,12 +32,12 @@ objectClass: uidObject
 objectClass: inetOrgPerson
 objectClass: top
 cn: $USER
-givenName: $USER
-sn: $USER
+givenName: $USERFNAME
+sn: $USERSNAME
 uid: $USER
 mail: $USER@openmicroscopy.org
 ou: Users
-userpassword: ome
+userpassword: $USERPASSWORD
 EOF
 elif [ $1 = "in" ]; then
     shift
@@ -78,6 +84,7 @@ delete: owner
 owner: $USERDN
 EOF
 else
-    echo "huh?"
+    echo "wrong input values"
+    echo "./user loginname firstname surname password add"
     exit 2
 fi
